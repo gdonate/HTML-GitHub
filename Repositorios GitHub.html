@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html>
+<head>
+
+ <title>REPOSITORIOS GITHUB</title>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+
+
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+<script>
+$(document).ready(function(){
+  $("button").click(function(){
+    $.get("https://api.github.com/users/"+ $("#usr").val() , function(data, status){
+      $("#username").text(data.login)
+      $("#seguidores").text(data.followers)
+      $("#repositorio").text(data.public_repos)
+      $("#info").text(data.url)
+      
+      },"json");
+  
+   
+  });
+});
+</script>
+</head>
+
+<body>
+
+<div class="jumbotron text-center">
+  <h1>REPOSITORIOS GITHUB</h1>
+  <p>Encuentra todos los repositorios de la persona que buscas</p> 
+</div>
+
+
+
+
+
+<div class="container">
+   <h2>Introduce nombre de usuario:</h2>
+    <form>
+    <div class="form-group">
+      <label for="usr">Nombre:</label>
+      <input type="text" name="usr" id="usr">
+    </div>
+  </form>     
+  <button type="button" class="btn" value="Pulsame" onclick="pulsar()">
+      <span class="glyphicon glyphicon-search"></span> Buscar
+      
+    </button>
+  <table class="table">
+    <thead>
+      <tr>
+        <th>Nombre de Usuario</th>
+        <th>Nº Seguidores</th>
+        <th>Nº Repositorios</th>
+        <th>URL del perfil</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td id ="username"></td>
+        <td id ="seguidores"></td>
+        <td id ="repositorio"></td>
+        <td id ="info"></td>
+      </tr>
+    </tbody>
+  </table>
+   
+  </p>
+</div>
+
+
+
+
+
+
+
+
+
+
+</body>
+</html>
